@@ -3,9 +3,14 @@ const bodyParser=require('body-parser');
 const path=require('path');
 const http=require('http');
 const app=express();
+const mongoose=require('mongoose');
 
-app.use(bodyParser.json());
+mongoose.connect('mongodb://localhost:27017/NodeAngular',{useNewUrlParser:true})
+       .then((res)=>console.log("connection established"))
+       .catch((err)=>console.log("error"))
+
 app.use(bodyParser.urlencoded({extended:false}))
+
 
 app.use(express.static(path.join(__dirname,'dist')))
 
