@@ -12,8 +12,8 @@ const AdminSchema=new mongoose.Schema({
   photo:{type:String},
   role:{type:String},
   room:[{type:mongoose.Schema.Types.ObjectId,ref:'RoomModel'}],
-  category:[{type:mongoose.Schema.Types.ObjectId,ref:'CategoryModel'}],
-  facility:[{type:mongoose.Schema.Types.ObjectId,ref:'FacilityModel'}]
+  roomcategory:[{type:mongoose.Schema.Types.ObjectId,ref:'RoomCategoryModel'}],
+  roomfacility:[{type:mongoose.Schema.Types.ObjectId,ref:'RoomFacilityModel'}]
 
 })
 
