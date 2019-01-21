@@ -7,9 +7,10 @@ const RoomFacilityModel=require('../../Schema/admin/roomfacility');
 const RoomCategoryModel=require('../../Schema/admin/roomcategory');
 
 
+/** Add Room*/
 
 router.post('/addroom',async (req,res)=>{
-console.log(req.body);
+
    const room=new RoomModel({
        roomtype:req.body.roomtype,
        roomtitle:req.body.roomtitle,
@@ -26,6 +27,7 @@ console.log(req.body);
    try {
      const admin=await AdminModel.findOne({});
      admin.room.push(room);
+     const result=await room.save();
      try {
       const savedata=await admin.save();
       return res.status(200).json({
@@ -51,9 +53,34 @@ console.log(req.body);
 
    }
 
+})
 
+/** Get Room*/
+
+router.get('/getroom',async (req,res)=>{
+  try {
+    const data=await AdminModel.findOne({}).populate('room');
+    console.log(data);
+    const roomarray=data.room;
+    return res.status(200).json({
+      message:"success",
+      data:roomarray
+    })
+
+
+  } catch (err) {
+    res.status(501).json({
+      message:"something went wrong",
+      err:err
+
+    })
+
+  }
 
 
 })
+
+
+
 
 module.exports=router;
