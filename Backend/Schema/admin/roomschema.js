@@ -3,8 +3,8 @@ const mongoose=require('mongoose');
 const RoomSchema=new mongoose.Schema({
   roomtype:{type:String},
   roomtitle:{type:String},
-  roomfacility:{type:String},
-  noofbeds:{type:String},
+  roomfacility:[{type:String}],
+  noofbeds:{type:Number},
   maxadults:{type:Number},
   maxchilds:{type:Number},
   roomfare:{type:Number},

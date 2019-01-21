@@ -4,8 +4,9 @@ const path=require('path');
 const http=require('http');
 const app=express();
 const mongoose=require('mongoose');
-const adminRoute=require('./Backend/Routes/admin/admin');
 
+const adminRoute=require('./Backend/Routes/admin/adminauth');
+const adminOperation=require('./Backend/Routes/admin/adminoperation');
 
 //connection
 mongoose.connect('mongodb://localhost:27017/hotelmanagement',{useNewUrlParser:true})
@@ -20,6 +21,7 @@ app.use(express.static(path.join(__dirname,'dist')))
 
 
 app.use('/admin',adminRoute);
+app.use('/adminoperation',adminOperation)
 
 
 // Server
