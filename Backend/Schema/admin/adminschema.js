@@ -10,7 +10,7 @@ const AdminSchema=new mongoose.Schema({
   city:{type:String},
   state:{type:String},
   photo:{type:String},
-  role:{type:String,default:"USER"},
+  role:{type:String,default:"ADMIN"},
   room:[{type:mongoose.Schema.Types.ObjectId,ref:'RoomModel'}],
   roomcategory:[{type:mongoose.Schema.Types.ObjectId,ref:'RoomCategoryModel'}],
   roomfacility:[{type:mongoose.Schema.Types.ObjectId,ref:'RoomFacilityModel'}]
