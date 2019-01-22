@@ -180,6 +180,26 @@ router.post('/addcategory',async (req,res)=>{
 
   }
 
+})
+
+
+router.get('/getcategory',async (req,res)=>{
+
+  try {
+   const roomcategory=await AdminModel.findOne({}).populate('roomcategory');
+   return res.status(200).json({
+     message:"success",
+     data:roomcategory
+   })
+
+
+  } catch (error) {
+    return res.status(501).json({
+      message:"something went wrong",
+      err:error
+    })
+
+  }
 
 
 })
