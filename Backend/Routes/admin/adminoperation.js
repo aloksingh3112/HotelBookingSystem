@@ -101,16 +101,53 @@ router.delete('/roomdelete/:id', async (req, res) => {
         err:error
       })
    }
-
-
-
-
-  } catch (error) {
+}
+catch (error) {
     return res.status(501).json({
       message:"something went wrong",
       err:error
     })
   }
+});
+
+router.put('/editroom/:id',async (req,res)=>{
+  try {
+    const room=await RoomModel.findById({_id:req.params.id});
+    room.roomtype=req.body.roomtype,
+    room.roomtitle= req.body.roomtitle,
+    room.roomnumber= req.body.roomnumber,
+    room.roomfacility= [...req.body.roomfacility],
+    room.noofbeds= req.body.noofbeds,
+    room.maxadults= req.body.maxadults,
+    room.maxchilds= req.body.maxchilds,
+    room.roomfare= req.body.roomfare,
+    room.roomimage= req.body.roomimage,
+    room.roomdescription= req.body.roomdescription
+    try {
+      const saveroom=await room.save();
+       return res.status(200).json({
+         message:"Edit succusfully",
+         data:saveroom
+       })
+
+    } catch (error) {
+      return res.status(201).json({
+        message:"edit unsucussful",
+        err:error
+      })
+
+    }
+
+  } catch (error) {
+    res.status(501).json({
+      message:"something went wrong",
+      error:error
+    })
+
+  }
+
+
+
 
 
 
