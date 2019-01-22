@@ -146,10 +146,39 @@ router.put('/editroom/:id',async (req,res)=>{
 
   }
 
+})
 
 
+// room category route
+router.post('/addcategory',async (req,res)=>{
+  console.log(req.body);
+
+   const roomCategory=new RoomCategoryModel({
+    roomcategory:req.body.roomcategory
+   })
+
+   try{
 
 
+    const admin=await AdminModel.findOne({});
+    console.log(admin);
+    admin.roomcategory.push(roomCategory);
+    const result=await admin.save();
+    const category=await roomCategory.save();
+    console.log(category);
+
+    return res.status(200).json({
+      message:"added successfully",
+      data:category
+    })
+  }
+  catch (error) {
+    return res.status(501).json({
+      message:"something went wrong",
+      error:error
+    })
+
+  }
 
 
 

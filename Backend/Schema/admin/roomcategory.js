@@ -3,4 +3,4 @@ const RoomCategorySchema=mongoose.Schema({
   roomcategory:{type:String}
 })
 
-module.export=mongoose.model('RoomCategoryModel',RoomCategorySchema)
+module.exports=mongoose.model('RoomCategoryModel',RoomCategorySchema)
