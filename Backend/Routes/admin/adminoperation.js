@@ -281,14 +281,7 @@ router.post('/addfacility',async (req,res)=>{
         message:"succussfully added",
         data:facilityresult
       })
-
-
-
-
-
-
-
-  } catch (error) {
+} catch (error) {
     return res.status(501).json({
       message:"something went wrong",
       error:error
@@ -296,7 +289,28 @@ router.post('/addfacility',async (req,res)=>{
 
   }
 
+})
 
+router.get('/getfacility',async (req,res)=>{
+  console.log("ggsipu")
+  try {
+    const admin=await AdminModel.findOne({}).populate('roomfacility')
+    console.log(admin);
+
+      return res.status(200).json({
+        message:"success",
+        data:admin
+      })
+
+
+
+  } catch (error) {
+    return res.status(501).json({
+      message:"something went wrong",
+      err:error
+    })
+
+  }
 
 })
 

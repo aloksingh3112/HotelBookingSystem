@@ -4,4 +4,4 @@ const RoomFacilitySchema=mongoose.Schema({
   roomfacility:{type:String}
 })
 
-module.exports=mongoose.model('RoomFacilitySchema',RoomFacilitySchema)
+module.exports=mongoose.model('RoomFacilityModel',RoomFacilitySchema)
