@@ -314,6 +314,30 @@ router.get('/getfacility',async (req,res)=>{
 
 })
 
+router.put('/updatefacility/:id',async (req,res)=>{
+  const id =req.params.id;
+  try {
+    const updatefacility= await RoomFacilityModel.findByIdAndUpdate({_id:id},{
+      $set:req.body
+    },{new:true})
+    if(updatefacility){
+      return res.status(200).json({
+        message:'updated succesfully',
+        data:updatefacility
+      })
+    }
+
+  } catch (error) {
+    return res.status(501).json({
+      message:"something went wrong"
+    })
+
+  }
+
+
+
+})
+
 
 
 
