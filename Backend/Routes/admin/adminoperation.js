@@ -221,13 +221,38 @@ router.delete('/deletecategory/:id',async (req,res)=>{
        })
 
     }
+ } catch (error) {
+    return res.status(501).json({
+      message:"something went wrong",
+      err:error
+    })
 
+  }
 
+})
+
+router.put('/updatecategory/:id',async (req,res)=>{
+  try {
+    const id=req.params.id;
+    const category=await RoomCategoryModel.findByIdAndUpdate({_id:id},{
+      $set:req.body
+    },{new:true})
+    if(category){
+       return res.status(200).json({
+         message:"succuss",
+         data:category
+       })
+    }
+    else{
+      return res.status(404).json({
+        message:"category not found"
+      })
+    }
 
   } catch (error) {
     return res.status(501).json({
       message:"something went wrong",
-      err:error
+      error:error
     })
 
   }
