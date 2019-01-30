@@ -338,6 +338,41 @@ router.put('/updatefacility/:id',async (req,res)=>{
 
 })
 
+router.delete('/deletefacility/:id',async (req,res)=>{
+
+  const id =req.params.id;
+  console.log(id);
+  try {
+
+     const deletefacility= await RoomFacilityModel.findOneAndDelete({_id:id});
+
+    if(deletefacility){
+      const facility= await AdminModel.findOne({});
+
+      const index= facility.roomfacility.indexOf(id);
+
+      facility.roomcategory.splice(index,1);
+      const savefacility=await facility.save();
+      return res.status(200).json({
+        message:"sucessfully deleted",
+        data:deletefacility
+      })
+    }
+    else{
+      return res.status(404).json({
+        message:"not found"
+      })
+    }
+
+  } catch (error) {
+    return res.status(501).json({
+      message:"something went wrong",
+      error:error
+    })
+  }
+
+})
+
 
 
 
