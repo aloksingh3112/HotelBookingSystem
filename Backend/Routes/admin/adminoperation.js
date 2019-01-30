@@ -205,5 +205,37 @@ router.get('/getcategory',async (req,res)=>{
 })
 
 
+router.delete('/deletecategory/:id',async (req,res)=>{
+  const id =req.params.id;
+  try {
+    const categorydelete=await RoomCategoryModel.findOneAndDelete({_id:id});
+    if(categorydelete){
+      const admin=await AdminModel.findOne({}).populate('roomcategory');
+      const index=admin.roomcategory.indexOf(id);
+       admin.roomcategory.splice(index,1);
+       const roomcategorysave=await admin.save();
+       return res.status(200).json({
+         message:"success",
+         data:roomcategorysave
+
+       })
+
+    }
+
+
+
+  } catch (error) {
+    return res.status(501).json({
+      message:"something went wrong",
+      err:error
+    })
+
+  }
+
+
+
+})
+
+
 
 module.exports = router;
