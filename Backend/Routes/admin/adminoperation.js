@@ -262,5 +262,45 @@ router.put('/updatecategory/:id',async (req,res)=>{
 })
 
 
+// room facility route
+
+router.post('/addfacility',async (req,res)=>{
+  try {
+    const facility=new RoomFacilityModel({
+      roomfacility:req.body.roomfacility
+    });
+    const facilityresult=await facility.save();
+    const adminroomfacility=await AdminModel.findOne({});
+
+    adminroomfacility.roomfacility.push(facilityresult);
+
+      const roomfacilityresult=await adminroomfacility.save();
+
+
+      return res.status(200).json({
+        message:"succussfully added",
+        data:facilityresult
+      })
+
+
+
+
+
+
+
+  } catch (error) {
+    return res.status(501).json({
+      message:"something went wrong",
+      error:error
+    })
+
+  }
+
+
+
+})
+
+
+
 
 module.exports = router;
