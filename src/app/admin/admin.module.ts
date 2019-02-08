@@ -1,3 +1,4 @@
+import { AdminRouting } from './adminrouting.module';
 import { AdminComponent } from './admin.component';
 import { NgModule } from '@angular/core';
 
@@ -7,7 +8,7 @@ import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations:[AdminComponent],
-  imports:[],
+  imports:[AdminRouting],
   providers:[]
 
 })
