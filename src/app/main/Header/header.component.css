@@ -1,0 +1,17 @@
+.nav-link{
+
+  color: wheat;
+  cursor: pointer;
+  font-weight: 700;
+
+}
+
+
+.navbar-brand{
+  color: white!important;
+  font-variant: small-caps;
+  font-weight: 800;
+  font-size: x-large ;
+  transform: translateY(-3px)
+
+}
