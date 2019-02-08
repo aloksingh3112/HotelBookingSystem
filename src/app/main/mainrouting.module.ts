@@ -22,6 +22,10 @@ const routes:Routes=[
   {
     path:'register',
     component:RegisterComponent
+  },
+  {
+      path: 'admin',
+      loadChildren: '../admin/admin.module#AdminModule'
   }
 ]
 

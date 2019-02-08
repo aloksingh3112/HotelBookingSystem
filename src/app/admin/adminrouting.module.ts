@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 
 const adminRouutes: Routes = [
   {
-    path: 'admin',
+    path: '',
     component: AdminComponent
   }
 ]
