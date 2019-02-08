@@ -1,3 +1,4 @@
+import { UserRouting } from './userrouting.module';
 import { UserComponent } from './user.component';
 import { NgModule } from '@angular/core';
 
@@ -6,7 +7,7 @@ import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations:[UserComponent],
-  imports:[],
+  imports:[UserRouting],
   providers:[],
 
 

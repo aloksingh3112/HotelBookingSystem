@@ -9,6 +9,6 @@ import { Component } from '@angular/core';
   styleUrls:['./user.component.css']
 
 })
-export class UserComponent{
+export class UserComponent {
 
 }
