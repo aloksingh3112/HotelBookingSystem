@@ -25,9 +25,6 @@ router.post('/signup', async (req, res) => {
       mobile: req.body.mobile,
       dateofbirth: req.body.dateofbirth,
       address: req.body.address,
-      city: req.body.city,
-      state: req.body.city,
-      country: req.body.country,
       photo: req.body.photo,
       role: "ADMIN",
 

@@ -7,8 +7,6 @@ const AdminSchema=new mongoose.Schema({
   mobile:{type:Number},
   dateofbirth:{type:Date},
   address:{type:String},
-  city:{type:String},
-  state:{type:String},
   photo:{type:String},
   role:{type:String,default:"ADMIN"},
   room:[{type:mongoose.Schema.Types.ObjectId,ref:'RoomModel'}],
