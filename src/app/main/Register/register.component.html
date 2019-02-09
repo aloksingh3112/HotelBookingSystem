@@ -1,5 +1,7 @@
 <div class="container mt-4 mb-4">
   <form (ngSubmit)='register(f)' #f='ngForm'>
+
+    
     <div class="form-group">
       <label for="name">Name</label>
       <input type="text" class="form-control" id="name" placeholder="Enter Name"
@@ -15,12 +17,16 @@
 
     <div class="form-group">
       <label for="exampleInputEmail1">Email Address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name='email' ngModel #email='ngModel' required>
+      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name='email' ngModel #email='ngModel' required email>
 
       <div class='alert alert-danger' *ngIf='email.touched && email.invalid'>
         <div class='email.errors.required'>
-            Name is required
+            Email is required
         </div>
+
+        <div class='email.errors.email'>
+          Email is invalid
+       </div>
 
       </div>
 
@@ -31,13 +37,15 @@
 
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name='password' ngModel #password='ngModel' required>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name='password' ngModel #password='ngModel' required [min]='4'>
 
       <div class='alert alert-danger' *ngIf='password.touched && password.invalid'>
         <div class='password.errors.required'>
             password is required
         </div>
-
+        <div class='password.errors.min'>
+          password should be greater than 3 digit
+       </div>
       </div>
     </div>
 
@@ -53,22 +61,20 @@
         </div>
 
       </div>
-
-    </div>
+   </div>
 
 
     <div class="form-group">
       <label for="dob">Date Of Birth</label>
-      <input type="date" class="form-control" id="dob" placeholder="Enter date of birth " name='dateofbirth' ngModel #dob='ngModel' required>
+      <input type="date" class="form-control" id="dob" placeholder="Enter date of birth " name='dateofbirth' ngModel #dob='ngModel' required >
       <div class='alert alert-danger' *ngIf='dob.touched && dob.invalid'>
         <div class='dob.errors.required'>
             dob is required
         </div>
+     </div>
+</div>
 
-      </div>
 
-
-    </div>
 
     <div class="form-group">
       <label for="address">Address</label>
@@ -81,6 +87,7 @@
 
       </div>
     </div>
+
 
 
 
