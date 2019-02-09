@@ -1,48 +1,97 @@
 <div class="container mt-4 mb-4">
-  <form>
+  <form (ngSubmit)='register(f)' #f='ngForm'>
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" placeholder="Enter Name">
+      <input type="text" class="form-control" id="name" placeholder="Enter Name"
+       name='name' ngModel  #name='ngModel' required>
+     <div class='alert alert-danger' *ngIf='name.touched && name.invalid'>
+       <div class='name.errors.required'>
+           Name is required
+       </div>
 
-    </div>
+     </div>
+   </div>
+
+
     <div class="form-group">
       <label for="exampleInputEmail1">Email Address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name='email' ngModel #email='ngModel' required>
+
+      <div class='alert alert-danger' *ngIf='email.touched && email.invalid'>
+        <div class='email.errors.required'>
+            Name is required
+        </div>
+
+      </div>
 
     </div>
+
+
+
+
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name='password' ngModel #password='ngModel' required>
+
+      <div class='alert alert-danger' *ngIf='password.touched && password.invalid'>
+        <div class='password.errors.required'>
+            password is required
+        </div>
+
+      </div>
     </div>
+
+
 
     <div class="form-group">
       <label for="mobile">Mobile Number</label>
-      <input type="number" class="form-control" id="mobile" placeholder="Enter mobile number">
+      <input type="number" class="form-control" id="mobile" placeholder="Enter mobile number" name='mobile' ngModel #mobile='ngModel' required>
+
+      <div class='alert alert-danger' *ngIf='mobile.touched && mobile.invalid'>
+        <div class='mobile.errors.required'>
+            mobile is required
+        </div>
+
+      </div>
 
     </div>
 
 
     <div class="form-group">
       <label for="dob">Date Of Birth</label>
-      <input type="date" class="form-control" id="dob" placeholder="Enter date of birth ">
+      <input type="date" class="form-control" id="dob" placeholder="Enter date of birth " name='dateofbirth' ngModel #dob='ngModel' required>
+      <div class='alert alert-danger' *ngIf='dob.touched && dob.invalid'>
+        <div class='dob.errors.required'>
+            dob is required
+        </div>
+
+      </div>
+
 
     </div>
 
     <div class="form-group">
       <label for="address">Address</label>
-      <textarea class="form-control" id="address" rows="3"></textarea>
+      <textarea class="form-control" id="address" rows="3" name='address' ngModel #address='ngModel' required></textarea>
+
+      <div class='alert alert-danger' *ngIf='address.touched && address.invalid'>
+        <div class='address.errors.required'>
+            address is required
+        </div>
+
+      </div>
     </div>
 
 
 
     <div class="form-group">
       <label for="photo">Photo</label>
-      <input type="file" class="form-control-file" id="photo">
+      <input type="file" class="form-control-file" id="photo" name='photo' ngModel>
     </div>
 
 
 
-    <button type="button" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]='f.invalid'>Submit</button>
     <button type="button" class="btn btn-danger ml-4">Cancel</button>
 
   </form>
