@@ -1,0 +1,9 @@
+.adminlink{
+  display: inline-block;
+  color: aqua;
+  cursor: pointer;
+  margin-left:8px;
+  font-size: x-large;
+  font-weight: 400;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}

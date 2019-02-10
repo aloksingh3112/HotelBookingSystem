@@ -1,3 +1,4 @@
+import { OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MainService } from './../main.service';
 import { Component } from '@angular/core';
@@ -9,11 +10,18 @@ import { Component } from '@angular/core';
   templateUrl:'./login.component.html',
   styleUrls:['./login.component.css']
 })
-export class LoginComponent{
+export class LoginComponent implements OnInit{
+  isAdmin= false;
+
   constructor(public mainService:MainService){
 
   }
+  ngOnInit(){
+   this.isAdmin = false;
+
+  }
   login(form:NgForm){
+    if(!this.isAdmin){
     this.mainService.login(form.value)
      .subscribe(
        data=>{
@@ -23,6 +31,16 @@ export class LoginComponent{
          console.log(err)
        }
      )
+    }
+    else {
+
+    }
+
+  }
+
+  changeAdmin(){
+    this.isAdmin = !this.isAdmin;
+
 
   }
 

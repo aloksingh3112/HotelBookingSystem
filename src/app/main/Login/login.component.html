@@ -27,7 +27,13 @@
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary" *ngIf='!isAdmin'>Login</button>
+      <button type="submit" class="btn btn-secondary" *ngIf='isAdmin'>Admin Login</button>
       <button type="button" class="btn btn-danger ml-4">Cancel</button>
+      <a (click)='changeAdmin()' class='adminlink' >
+             <span *ngIf='isAdmin'>Login as Admin</span>
+             <span *ngIf='!isAdmin'>Login as User</span>
+      </a>
+
     </form>
 </div>
