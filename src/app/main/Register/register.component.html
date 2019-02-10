@@ -1,7 +1,7 @@
 <div class="container mt-4 mb-4">
-  <form (ngSubmit)='register(f)' #f='ngForm'>
+  <form (ngSubmit)='register(f.value)' #f='ngForm'>
 
-    
+
     <div class="form-group">
       <label for="name">Name</label>
       <input type="text" class="form-control" id="name" placeholder="Enter Name"
@@ -15,6 +15,7 @@
    </div>
 
 
+
     <div class="form-group">
       <label for="exampleInputEmail1">Email Address</label>
       <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name='email' ngModel #email='ngModel' required email>
@@ -25,7 +26,7 @@
         </div>
 
         <div class='email.errors.email'>
-          Email is invalid
+            Email is invalid
        </div>
 
       </div>
@@ -91,10 +92,10 @@
 
 
 
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="photo">Photo</label>
-      <input type="file" class="form-control-file" id="photo" name='photo' ngModel>
-    </div>
+      <input type="file" class="form-control-file" id="photo" name='photo' ngModel (change)='gg($event)'>
+    </div> -->
 
 
 

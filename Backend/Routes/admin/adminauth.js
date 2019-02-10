@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 const AdminModel = require('../../Schema/admin/adminschema');
 
 router.post('/signup', async (req, res) => {
-  console.log(req.body);
+  console.log(req.headers);
 
 
   try {

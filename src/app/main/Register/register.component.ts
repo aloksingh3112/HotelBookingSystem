@@ -1,3 +1,4 @@
+import { MainService } from './../main.service';
 import { NgForm } from '@angular/forms';
 import { Component } from '@angular/core';
 
@@ -9,10 +10,21 @@ import { Component } from '@angular/core';
 
 })
 export class RegisterComponent {
-  constructor(){}
+  constructor(private mainService:MainService){}
+
   register(form:NgForm){
-    console.log(form);
+    this.mainService.register(form)
+      .subscribe(
+        data=>{
+          
+        },
+        err=>{
+          console.log(err)
+        }
+      )
+
 
   }
+
 
 }
