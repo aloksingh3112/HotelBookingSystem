@@ -1,5 +1,5 @@
 <div class="container mt-4 mb-4">
-  <form (ngSubmit)='register(f.value)' #f='ngForm'>
+  <form (ngSubmit)='register(f)' #f='ngForm'>
 
 
     <div class="form-group">
@@ -101,6 +101,15 @@
 
     <button type="submit" class="btn btn-primary" [disabled]='f.invalid'>Submit</button>
     <button type="button" class="btn btn-danger ml-4">Cancel</button>
+
+    <div class="form-group mb-4 mt-3">
+      <div class="alert alert-success" *ngIf='sucessMessage'>
+          {{sucessMessage}}
+      </div>
+      <div class="alert alert-danger" *ngIf='errorMessage'>
+         {{errorMessage}}
+      </div>
+    </div>
 
   </form>
 </div>

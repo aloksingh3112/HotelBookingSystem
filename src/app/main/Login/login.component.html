@@ -1,14 +1,33 @@
 <div class="container">
+  <form (ngSubmit)='login(f)' #f='ngForm'>
     <div class="form-group mt-4">
         <label for="exampleInputEmail1">Email Address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" required ngModel email #email='ngModel' name='email'>
+        <div class="alert alert-danger" *ngIf='email.touched && email.invalid'>
+          <div *ngIf='email.errors.required'>
+           Email is required
+          </div>
+
+          <div *ngIf='email.errors.email'>
+              Email is required
+            </div>
+
+
+        </div>
 
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name='password' required ngModel #pass='ngModel'>
+        <div class="alert alert-danger" *ngIf='pass.invalid && pass.touched'>
+          <div *ngIf='pass.errors.required'>
+             Password is required
+          </div>
+
+        </div>
       </div>
 
-      <button type="button" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
       <button type="button" class="btn btn-danger ml-4">Cancel</button>
+    </form>
 </div>

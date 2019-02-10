@@ -14,8 +14,9 @@ router.post('/signup', async (req, res) => {
     });
 
     if (email) {
-      return res.status(200).json({
-        message: "email already existe"
+      return res.status(201).json({
+        message: "email already exist",
+        isRegister:false
       })
     }
     const admin = new AdminModel({
@@ -34,7 +35,8 @@ router.post('/signup', async (req, res) => {
 
       res.status(200).json({
         message: "register succesfully",
-        user: saveadmin
+        user: saveadmin,
+        isRegister:true
       })
     } catch (err) {
       res.status(500).json({
