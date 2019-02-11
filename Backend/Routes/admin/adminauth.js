@@ -57,7 +57,7 @@ router.post('/signup', async (req, res) => {
 
 
 router.post('/login',async (req,res)=>{
-  console.log(req.body);
+  console.log(req.headers.auth);
 
    try {
      const admin=await AdminModel.findOne({

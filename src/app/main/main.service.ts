@@ -1,8 +1,8 @@
-import { throwError } from "rxjs";
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { serverdata } from "./config";
-import { map, catchError } from "rxjs/operators";
+import { throwError } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { serverdata } from './config';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class MainService {
@@ -11,22 +11,16 @@ export class MainService {
   register(data: any) {
     const body = JSON.stringify(data);
 
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-
     return this.httpClient
-      .post<any>(`${serverdata.path}/admin/signup`, body, { headers: headers })
+      .post<any>(`${serverdata.path}/admin/signup`, body)
       .pipe(catchError(err => throwError(err)));
   }
 
    adminlogin(data){
      const body=JSON.stringify(data);
-     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-     return this.httpClient.post<any>(`${serverdata.path}/admin/login`,body,
-     {headers:headers}).pipe(
+
+     return this.httpClient.post<any>(`${serverdata.path}/admin/login`,body,{ observe: 'response' }
+     ).pipe(
        catchError(err=>throwError(err))
      )
 
