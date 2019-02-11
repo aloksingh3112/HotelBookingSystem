@@ -20,7 +20,7 @@ export class MainService {
       .pipe(catchError(err => throwError(err)));
   }
 
-   login(data){
+   adminlogin(data){
      const body=JSON.stringify(data);
      const headers = new HttpHeaders({
       'Content-Type': 'application/json'

@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit{
 
   }
   login(form:NgForm){
-    if(!this.isAdmin){
-    this.mainService.login(form.value)
+    if(this.isAdmin){
+    this.mainService.adminlogin(form.value)
      .subscribe(
        data=>{
          console.log(data)
