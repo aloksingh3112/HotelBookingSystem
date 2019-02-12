@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const AdminModel = require('../../Schema/admin/adminschema');
+const jwt=require('jsonwebtoken');
 
 router.post('/signup', async (req, res) => {
   console.log(req.headers);
@@ -57,7 +58,7 @@ router.post('/signup', async (req, res) => {
 
 
 router.post('/login',async (req,res)=>{
-  console.log(req.headers.auth);
+
 
    try {
      const admin=await AdminModel.findOne({
@@ -77,9 +78,15 @@ router.post('/login',async (req,res)=>{
       })
     }
 
+    const token=jwt.sign({
+      user:admin
+    },'aloksingh',{
+      expiresIn:10000
+    })
       res.status(200).json({
         message:"login success fully",
-        user:admin
+        user:admin,
+        token:token
       })
 
 

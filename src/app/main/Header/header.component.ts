@@ -1,3 +1,4 @@
+import { MainService } from './../main.service';
 import { Component } from '@angular/core';
 
 
@@ -8,5 +9,8 @@ import { Component } from '@angular/core';
   styleUrls:['./header.component.css']
 })
 export class HeaderComponent{
+  constructor(public mainService:MainService){
+
+  }
 
 }

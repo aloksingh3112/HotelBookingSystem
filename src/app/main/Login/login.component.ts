@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MainService } from './../main.service';
@@ -12,23 +13,35 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent implements OnInit{
   isAdmin= false;
+  errorMessage;
 
-  constructor(public mainService:MainService){
+  constructor(public mainService:MainService,private router:Router){
 
   }
   ngOnInit(){
+    this.errorMessage=null;
    this.isAdmin = false;
 
   }
   login(form:NgForm){
+    this.errorMessage=null;
     if(this.isAdmin){
     this.mainService.adminlogin(form.value)
      .subscribe(
        data=>{
-         console.log(data)
+        localStorage.setItem('token',data.body.token);
+        if(data.body.user.role== 'ADMIN'){
+          this.mainService.isAdmin=true;
+          this.mainService.isLogin=true;
+          this.router.navigateByUrl('/');
+
+        }
+        else{
+
+        }
        },
        err=>{
-         console.log('err',err)
+        this.errorMessage=err.error.message;
        }
      )
     }

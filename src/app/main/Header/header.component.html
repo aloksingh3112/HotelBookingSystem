@@ -19,7 +19,7 @@
 
 
 
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" *ngIf='mainService.isAdmin'>
         <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Administration
         </a>
@@ -33,7 +33,7 @@
 
 
 
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" *ngIf='mainService.isAdmin'>
         <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Reports
         </a>
@@ -48,38 +48,40 @@
 
 
       <li class="nav-item">
-        <a class="nav-link" >Book Room </a>
+        <a class="nav-link" *ngIf='!mainService.isAdmin'>Book Room </a>
       </li>
 
 
 
-      <li class="nav-item">
-        <a class="nav-link" >Room List </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" >My Booking</a>
+      <li class="nav-item" >
+        <a class="nav-link" *ngIf='!mainService.isAdmin'>Room List </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" >My Account</a>
+        <a class="nav-link" *ngIf='mainService.isUser'>My Booking</a>
       </li>
-
-
-
-      <li class="nav-item" routerLink='/register' routerLinkActive='active'>
-        <a class="nav-link" >Register</a>
-      </li>
-
-
-
-      <li class="nav-item" routerLink='/login' routerLinkActive='active'>
-        <a class="nav-link" >Login</a>
-      </li>
-
-
 
       <li class="nav-item">
+        <a class="nav-link" *ngIf='mainService.isUser || mainService.isAdmin'>My Account</a>
+      </li>
+
+
+
+      <li class="nav-item" routerLink='/register' routerLinkActive='active'
+      *ngIf='!mainService.isLogin'>
+        <a class="nav-link"  >Register</a>
+      </li>
+
+
+
+      <li class="nav-item" routerLink='/login' routerLinkActive='active'
+      *ngIf='!mainService.isLogin'>
+        <a class="nav-link"  >Login</a>
+      </li>
+
+
+
+      <li class="nav-item" *ngIf='mainService.isLogin'>
           <a class="nav-link" >Logout</a>
       </li>
 
