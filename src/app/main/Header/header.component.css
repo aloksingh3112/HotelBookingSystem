@@ -15,3 +15,7 @@
   transform: translateY(-3px)
 
 }
+
+.dropdown-item{
+  cursor: pointer;
+}

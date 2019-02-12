@@ -65,14 +65,14 @@ router.post('/login',async (req,res)=>{
      })
 
      if(!admin){
-       return res.status(402).json({
+       return res.status(400).json({
            message:"wrong credientials"
        })
      }
 
      const passcomp=bcrypt.compareSync(req.body.password,admin.password);
      if(!passcomp){
-      return res.status(402).json({
+      return res.status(400).json({
           message:"wrong credientials"
       })
     }
