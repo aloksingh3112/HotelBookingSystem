@@ -1,1 +1,21 @@
-<h1>Facility Component</h1>
+<div class="container">
+    <form (ngSubmit)='addFacility(f)' #f='ngForm'>
+      <div class="form-group mt-4">
+        <label for="facility">Room Facility</label>
+        <input type="text" class="form-control" name='roomfacility' id='facility' required ngModel>
+      </div>
+      <button class="btn btn-primary" type='submit'>
+        Add
+      </button>
+      <button class="btn btn-danger ml-3" type='button'>Reset</button>
+
+   <div class="alert alert-success mt-3" *ngIf='message'>
+      {{message}}
+    </div>
+    <div class="alert alert-danger mt-3" *ngIf='errorMessage'>
+        {{errorMessage}}
+      </div>
+  </form>
+
+  </div>
+

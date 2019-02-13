@@ -15,4 +15,9 @@ export class AdminService{
 
   }
 
+  addFacility(data){
+    const body=JSON.stringify(data);
+    return this.http.post<any>(`${serverdata.path}/adminoperation/addfacility`,body,{observe:'response'})
+  }
+
 }
