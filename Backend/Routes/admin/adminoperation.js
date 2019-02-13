@@ -164,14 +164,14 @@ router.post('/addcategory',[authMiddleware,adminMiddleware],async (req,res)=>{
 
 
     const admin=await AdminModel.findOne({});
-    console.log(admin);
+
     admin.roomcategory.push(roomCategory);
     const result=await admin.save();
     const category=await roomCategory.save();
-    console.log(category);
+
 
     return res.status(200).json({
-      message:"added successfully",
+      message:"Added successfully",
       data:category
     })
   }

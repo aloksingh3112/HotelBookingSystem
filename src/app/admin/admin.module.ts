@@ -1,3 +1,6 @@
+import { AdminService } from './admin.service';
+import { FormsModule } from '@angular/forms';
+
 import { RoomReportComponent } from './roomreport/roomreport.component';
 import { RoomComponent } from './room/room.component';
 import { FacilityReportComponent } from './facilityreport/facilityreport.component';
@@ -24,7 +27,7 @@ import { NgModule } from '@angular/core';
     RoomReportComponent,
 
   ],
-  imports: [AdminRouting, CommonModule],
-  providers: []
+  imports: [AdminRouting, CommonModule,FormsModule],
+  providers: [AdminService]
 })
 export class AdminModule {}

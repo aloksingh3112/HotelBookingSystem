@@ -1,10 +1,13 @@
-import { Observable } from 'rxjs';
-import { HttpInterceptor, HttpRequest, HttpHandler ,HttpEvent, HttpResponse, HttpHeaders} from '@angular/common/http';
-import { map } from 'rxjs/operators';
+
+
+import { Observable, throwError } from 'rxjs';
+import { HttpInterceptor, HttpRequest, HttpHandler ,HttpEvent, HttpResponse, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
+import { map, catchError } from 'rxjs/operators';
 
 
 
 export class AppIntercepters implements HttpInterceptor {
+
   intercept(req:HttpRequest<any>,next:HttpHandler):Observable<HttpEvent<any>>{
 
     const token = localStorage.getItem('token');
@@ -34,8 +37,19 @@ export class AppIntercepters implements HttpInterceptor {
         if(event instanceof HttpResponse){
           console.log('eventt',event)
         }
+
         return event;
-      })
+      }),
+      catchError(
+        (err:HttpErrorResponse)=>{
+         if(err.status==401 ){
+         window.location.href='/login'
+            return throwError(err)
+
+
+        }}
+
+      )
     );
   }
 
