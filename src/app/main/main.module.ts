@@ -20,7 +20,7 @@ import {HttpClientModule} from '@angular/common/http';
   imports: [MainRoutingModule, FormsModule,CommonModule,CustomFormsModule,
   HttpClientModule],
   providers: [MainService],
-  exports: [MainComponent]
+  exports: [MainComponent,HomeComponent]
 
 })
 export class MainModule {

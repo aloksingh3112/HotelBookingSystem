@@ -1,11 +1,15 @@
-import { AdminComponent } from './admin.component';
+import { AccountComponent } from './account/account.component';
+
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 const adminRouutes: Routes = [
   {
     path: '',
-    component: AdminComponent
+    component: AccountComponent
+  },
+  {
+
   }
 ]
 

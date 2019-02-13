@@ -13,7 +13,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    MainModule
+    MainModule,
 
   ],
   providers: [{

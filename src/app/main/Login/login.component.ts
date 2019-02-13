@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, RouterState } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MainService } from './../main.service';
@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit{
 
   constructor(public mainService:MainService,private router:Router){
 
+
   }
   ngOnInit(){
     this.errorMessage=null;
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit{
         if(data.body.user.role== 'ADMIN'){
           this.mainService.isAdmin=true;
           this.mainService.isLogin=true;
-          this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/admin');
 
         }
         else{

@@ -5,11 +5,12 @@ const AdminModel = require('../../Schema/admin/adminschema');
 const RoomModel = require('../../Schema/admin/roomschema');
 const RoomFacilityModel = require('../../Schema/admin/roomfacility');
 const RoomCategoryModel = require('../../Schema/admin/roomcategory');
-
+const adminMiddleware=require('../../middleware/adminmid');
+const authMiddleware=require('../../middleware/valid');
 
 /** Add Room*/
 
-router.post('/addroom', async (req, res) => {
+router.post('/addroom',[authMiddleware,adminMiddleware], async (req, res) => {
 
   const room = new RoomModel({
     roomtype: req.body.roomtype,
@@ -57,7 +58,7 @@ router.post('/addroom', async (req, res) => {
 
 /** Get Room*/
 
-router.get('/getroom', async (req, res) => {
+router.get('/getroom',[authMiddleware,adminMiddleware], async (req, res) => {
   try {
     const data = await AdminModel.findOne({}).populate('room');
     console.log(data);
@@ -81,7 +82,7 @@ router.get('/getroom', async (req, res) => {
 })
 
 
-router.delete('/roomdelete/:id', async (req, res) => {
+router.delete('/roomdelete/:id', [authMiddleware,adminMiddleware],async (req, res) => {
   console.log(req.params.id)
   try {
   const admin= await AdminModel.findOne({});
@@ -110,7 +111,9 @@ catch (error) {
   }
 });
 
-router.put('/editroom/:id',async (req,res)=>{
+
+
+router.put('/editroom/:id',[authMiddleware,adminMiddleware],async (req,res)=>{
   try {
     const room=await RoomModel.findById({_id:req.params.id});
     room.roomtype=req.body.roomtype,
@@ -150,7 +153,7 @@ router.put('/editroom/:id',async (req,res)=>{
 
 
 // room category route
-router.post('/addcategory',async (req,res)=>{
+router.post('/addcategory',[authMiddleware,adminMiddleware],async (req,res)=>{
   console.log(req.body);
 
    const roomCategory=new RoomCategoryModel({
@@ -183,7 +186,7 @@ router.post('/addcategory',async (req,res)=>{
 })
 
 
-router.get('/getcategory',async (req,res)=>{
+router.get('/getcategory',[authMiddleware,adminMiddleware],async (req,res)=>{
 
   try {
    const roomcategory=await AdminModel.findOne({}).populate('roomcategory');
@@ -205,7 +208,7 @@ router.get('/getcategory',async (req,res)=>{
 })
 
 
-router.delete('/deletecategory/:id',async (req,res)=>{
+router.delete('/deletecategory/:id',[authMiddleware,adminMiddleware],async (req,res)=>{
   const id =req.params.id;
   try {
     const categorydelete=await RoomCategoryModel.findOneAndDelete({_id:id});
@@ -231,7 +234,7 @@ router.delete('/deletecategory/:id',async (req,res)=>{
 
 })
 
-router.put('/updatecategory/:id',async (req,res)=>{
+router.put('/updatecategory/:id',[authMiddleware,adminMiddleware],async (req,res)=>{
   try {
     const id=req.params.id;
     const category=await RoomCategoryModel.findByIdAndUpdate({_id:id},{
@@ -264,7 +267,7 @@ router.put('/updatecategory/:id',async (req,res)=>{
 
 // room facility route
 
-router.post('/addfacility',async (req,res)=>{
+router.post('/addfacility',[authMiddleware,adminMiddleware],async (req,res)=>{
   try {
     const facility=new RoomFacilityModel({
       roomfacility:req.body.roomfacility
@@ -291,7 +294,7 @@ router.post('/addfacility',async (req,res)=>{
 
 })
 
-router.get('/getfacility',async (req,res)=>{
+router.get('/getfacility',[authMiddleware,adminMiddleware],async (req,res)=>{
   console.log("ggsipu")
   try {
     const admin=await AdminModel.findOne({}).populate('roomfacility')
@@ -314,7 +317,7 @@ router.get('/getfacility',async (req,res)=>{
 
 })
 
-router.put('/updatefacility/:id',async (req,res)=>{
+router.put('/updatefacility/:id',[authMiddleware,adminMiddleware],async (req,res)=>{
   const id =req.params.id;
   try {
     const updatefacility= await RoomFacilityModel.findByIdAndUpdate({_id:id},{
@@ -338,7 +341,7 @@ router.put('/updatefacility/:id',async (req,res)=>{
 
 })
 
-router.delete('/deletefacility/:id',async (req,res)=>{
+router.delete('/deletefacility/:id',[authMiddleware,adminMiddleware],async (req,res)=>{
 
   const id =req.params.id;
   console.log(id);
