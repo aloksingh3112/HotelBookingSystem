@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { AdminService } from './../admin.service';
+import { Component, OnInit } from '@angular/core';
 
 
 @Component({
@@ -6,6 +7,23 @@ import { Component } from "@angular/core";
   templateUrl:'./category.component.html',
   styleUrls:['./category.component.css']
 })
-export class CategoryReportComponent{
+export class CategoryReportComponent implements OnInit{
+  spinner = true;
+  categories=[];
+constructor(public adminService: AdminService){
+
+}
+
+ngOnInit(){
+ this.adminService.getCategory()
+    .subscribe(
+      data  =>{
+        console.log(data);
+        this.categories=[...data.body.data.roomcategory];
+        this.spinner=false;
+      },
+      err => console.log(err)
+    )
+}
 
 }

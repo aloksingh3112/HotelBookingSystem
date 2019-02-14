@@ -58,15 +58,15 @@ export class RoomComponent implements OnInit{
 
   addRoom(data:NgForm){
     this.message=null;
-    this.errorMessage=null;
+    this.errorMessage= null;
    this.adminService.addRoom(data.value)
     .subscribe(
       roomdata=>{
-        this.message=roomdata.body.message;
+        this.message = roomdata.body.message;
         data.reset();
       },
       err=>{
-        this.errorMessage=err.error.message;
+        this.errorMessage = err.error.message;
       }
     )
 
