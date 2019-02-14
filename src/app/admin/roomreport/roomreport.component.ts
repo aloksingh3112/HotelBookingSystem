@@ -1,10 +1,27 @@
-import { Component } from "@angular/core";
+import { AdminService } from './../admin.service';
+import { Component ,OnInit} from '@angular/core';
 
 @Component({
   selector:'app-roomreport',
   templateUrl:'./roomreport.component.html',
   styleUrls:['./roomreport.component.css']
 })
-export class RoomReportComponent{
+export class RoomReportComponent implements OnInit {
+  spinner= true;
+  rooms= [];
+  constructor(public adminService:AdminService){
+
+  }
+
+  ngOnInit(){
+      this.adminService.getRoom()
+        .subscribe(
+          data => {
+            this.rooms=[...data.body.data]
+            this.spinner = false;
+          },
+          err=>console.log(err)
+        )
+  }
 
 }

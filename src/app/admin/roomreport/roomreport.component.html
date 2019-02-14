@@ -1,1 +1,46 @@
-<h1>room Report component</h1>
+<div class="container gg" *ngIf='spinner'>
+
+  <div class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+</div>
+
+
+<div class="table-responsive-sm">
+<div class="container" *ngIf='!spinner'>
+<h2>Room Category Reports</h2>
+<table class='table table-bordered'>
+ <thead class='thead-light'>
+     <tr >
+       <td><b>Image</b></td>
+       <td><b>Room Title</b></td>
+       <td><b>Room Type</b></td>
+       <td><b>Beds</b></td>
+       <td><b>Max Adults</b></td>
+       <td><b>Max Childs</b></td>
+       <td><b>Fare</b></td>
+       <td><b>Action</b></td>
+     </tr>
+ </thead>
+ <tbody>
+   <tr *ngFor='let room of rooms'>
+        <td>{{room.roomimage}}</td>
+        <td>{{room.roomtitle}}</td>
+        <td>{{room.roomtype}}</td>
+        <td>{{room.noofbeds}}</td>
+        <td>{{room.maxadults}}</td>
+        <td>{{room.maxchilds}}</td>
+        <td>{{room.roomfare}}</td>
+
+      <td><a class='action'>Edit</a> | <a class='action'>Delete</a></td>
+   </tr>
+ </tbody>
+
+</table>
+
+</div>
+
+</div>
+

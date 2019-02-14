@@ -51,6 +51,15 @@ export class AdminService{
 
   }
 
+  getRoom(){
+    return this.http.get<any>(`${serverdata.path}/adminoperation/getroom`,{observe:'response'})
+      .pipe(
+        catchError(
+          err=>throwError(err)
+        )
+      )
+  }
+
 
 
   addRoom(data){
