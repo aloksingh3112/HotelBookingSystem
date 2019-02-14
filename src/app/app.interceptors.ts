@@ -42,7 +42,7 @@ export class AppIntercepters implements HttpInterceptor {
       }),
       catchError(
         (err:HttpErrorResponse)=>{
-         if(err.status==401 ){
+         if(err.status==401 ||403 ){
          window.location.href='/login';
             return throwError(err)
 

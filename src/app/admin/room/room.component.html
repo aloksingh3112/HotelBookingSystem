@@ -1,13 +1,146 @@
-<div class="container">
- <form >
+<div class="container gg" *ngIf='spinner'>
+
+    <div class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+</div>
 
 
 
 
 
 
+<div class="container" *ngIf='!spinner'>
+  <form (ngSubmit)='addRoom(f)' #f='ngForm'>
 
- </form>
+    <div class="form-group mt-4">
+      <label for="roomtype"><b>Select Room Type</b></label>
+      <select class="custom-select custom-select-lg mb-3" id='roomtype' name='roomtype' ngModel #roomtype='ngModel' required>
+        <option *ngFor='let data of datas' [value]='data'>{{data}}</option>
+      </select>
+      <div *ngIf='roomtype.invalid && roomtype.touched'>
+       <div class="alert alert-danger" *ngIf='roomtype.errors.required'>
+            Room Type is required
+       </div>
+      </div>
+
+
+      <b>Select Room Facility</b>
+      <br>
+      <ss-multiselect-dropdown [options]="myOptions" [(ngModel)]="optionsModel" name='roomfacility' class='mt-2' #roomfacility='ngModel' required></ss-multiselect-dropdown>
+
+      <div *ngIf='roomfacility.invalid && roomfacility.touched'>
+          <div class="alert alert-danger" *ngIf='roomfacility.errors.required'>
+               Room facility is required
+          </div>
+    </div>
+
+      <br>
+
+      <div class="form-group mt-2">
+      <label for="roomtitle" ><b>Room Title</b></label>
+      <input type="text" class="form-control "id='roomtitle' placeholder='enter room title' name='roomtitle' ngModel #roomtitle='ngModel' required>
+
+      <div *ngIf='roomtitle.invalid && roomtitle.touched'>
+          <div class="alert alert-danger" *ngIf='roomtitle.errors.required'>
+               Room title is required
+          </div>
+    </div>
+  </div>
+
+
+    <div class="form-group">
+      <label for="roomnumber" ><b>Room Number</b></label>
+      <input type="number" class="form-control" name='roomnumber' placeholder='enter room number' ngModel #roomnumber='ngModel' required>
+      <div *ngIf='roomnumber.invalid && roomnumber.touched'>
+          <div class="alert alert-danger" *ngIf='roomnumber.errors.required'>
+               Room number is required
+          </div>
+    </div>
+
+    </div>
+
+
+    <div class="form-group">
+        <label for="noofbeds" ><b>No Of Beds</b></label>
+        <input type="text" class="form-control" name='noofbeds' placeholder='enter number of beds' ngModel #noofbed=ngModel required>
+        <div *ngIf='noofbed.invalid && noofbed.touched'>
+            <div class="alert alert-danger" *ngIf='noofbed.errors.required'>
+                 no of bed is required
+            </div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="maxadult" ><b>Max Adults</b></label>
+        <input type="number" class="form-control" name='maxadults' placeholder='enter max adults' ngModel #maxadults='ngModel' required>
+        <div *ngIf='maxadults.invalid && maxadults.touched'>
+            <div class="alert alert-danger" *ngIf='maxadults.errors.required'>
+                 Max adult is required
+            </div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="maxchilds" ><b>Max Childs</b></label>
+        <input type="number" class="form-control" name='maxchilds' placeholder='enter max childs' ngModel #maxchild='ngModel' required>
+        <div *ngIf='maxchild.invalid && maxchild.touched'>
+            <div class="alert alert-danger" *ngIf='maxchild.errors.required'>
+                 max child is required
+            </div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="roomfare" ><b>Room Fare</b></label>
+        <input type="number" class="form-control" name='roomfare' placeholder='enter room fare' ngModel #roomfare='ngModel' required>
+        <div *ngIf='roomfare.invalid && roomfare.touched'>
+            <div class="alert alert-danger" *ngIf='roomfare.errors.required'>
+                 Room fare is required
+            </div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="roomimage" ><b>Room Image</b></label>
+        <input type="text" class="form-control" name='roomimage' placeholder='enter room image' ngModel #image='ngModel' required>
+        <div *ngIf='image.invalid && image.touched'>
+            <div class="alert alert-danger" *ngIf='image.errors.required'>
+                 Room title is required
+            </div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="roomdescription"><b>Room Description</b></label>
+        <textarea class="form-control" id="roomdescription" rows="3" name='roomdescription' ngModel #desc='ngModel' required></textarea>
+
+        <div *ngIf='desc.invalid && desc.touched'>
+            <div class="alert alert-danger" *ngIf='desc.errors.required'>
+                 Room description is required
+            </div>
+      </div>
+    </div>
+
+
+
+    <button class="btn btn-primary mb-3" type='submit' [disabled]='f.invalid'>
+        Add
+      </button>
+    <button class="btn btn-danger ml-3 mb-3" type='button'>Reset</button>
+
+
+
+
+</div>
+</form>
 
 
 </div>

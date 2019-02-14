@@ -1,5 +1,9 @@
+
 import { AdminService } from './admin.service';
 import { FormsModule } from '@angular/forms';
+import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
+
+
 
 import { RoomReportComponent } from './roomreport/roomreport.component';
 import { RoomComponent } from './room/room.component';
@@ -27,7 +31,7 @@ import { NgModule } from '@angular/core';
     RoomReportComponent,
 
   ],
-  imports: [AdminRouting, CommonModule,FormsModule],
+  imports: [AdminRouting, CommonModule,FormsModule,MultiselectDropdownModule],
   providers: [AdminService]
 })
 export class AdminModule {}
