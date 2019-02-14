@@ -11,16 +11,24 @@ export class AdminService{
 
   }
 
+
+
+
   addCategory(data){
     const body=JSON.stringify(data);
     return this.http.post<any>(`${serverdata.path}/adminoperation/addcategory`,body,{observe:'response'})
 
   }
 
+
+
+
   addFacility(data){
     const body=JSON.stringify(data);
     return this.http.post<any>(`${serverdata.path}/adminoperation/addfacility`,body,{observe:'response'})
   }
+
+
 
   getCategory(){
     return this.http.get<any>(`${serverdata.path}/adminoperation/getcategory`,{observe:'response'})
@@ -41,6 +49,18 @@ export class AdminService{
        )
      )
 
+  }
+
+
+
+  addRoom(data){
+    const body=JSON.stringify(data);
+    return this.http.post<any>(`${serverdata.path}/adminoperation/addroom`,body,{observe:'response'})
+      .pipe(
+        catchError(
+          err=>throwError(err)
+        )
+      )
   }
 
 }

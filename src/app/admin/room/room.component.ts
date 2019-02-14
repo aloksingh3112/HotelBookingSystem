@@ -13,6 +13,8 @@ import { IMultiSelectOption } from 'angular-2-dropdown-multiselect';
 export class RoomComponent implements OnInit{
   datas = [] ;
   spinner = true;
+  message;
+  errorMessage;
 
   optionsModel: number[];
   myOptions: IMultiSelectOption[]= [];
@@ -42,7 +44,7 @@ export class RoomComponent implements OnInit{
 
         this.myOptions.push(obj);
        }
-     
+
 
        this.spinner = false;
      },
@@ -55,7 +57,18 @@ export class RoomComponent implements OnInit{
 
 
   addRoom(data:NgForm){
-    console.log(data.value);
+    this.message=null;
+    this.errorMessage=null;
+   this.adminService.addRoom(data.value)
+    .subscribe(
+      roomdata=>{
+        this.message=roomdata.body.message;
+        data.reset();
+      },
+      err=>{
+        this.errorMessage=err.error.message;
+      }
+    )
 
   }
 
