@@ -18,7 +18,7 @@
     <div class="form-group mt-4">
       <label for="roomtype"><b>Select Room Type</b></label>
       <select class="custom-select custom-select-lg mb-3" id='roomtype' name='roomtype' ngModel #roomtype='ngModel' required>
-        <option *ngFor='let data of datas' [value]='data'>{{data}}</option>
+        <option *ngFor='let data of datas' [value]='data.roomcategory'>{{data.roomcategory}}</option>
       </select>
       <div *ngIf='roomtype.invalid && roomtype.touched'>
        <div class="alert alert-danger" *ngIf='roomtype.errors.required'>

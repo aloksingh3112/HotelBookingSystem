@@ -24,7 +24,7 @@ export class AdminService{
 
   getCategory(){
     return this.http.get<any>(`${serverdata.path}/adminoperation/getcategory`,{observe:'response'})
-     pipe(
+     .pipe(
        catchError(
          err=>throwError(err)
        )
@@ -35,7 +35,7 @@ export class AdminService{
 
   getFacility(){
     return this.http.get<any>(`${serverdata.path}/adminoperation/getfacility`,{observe:'response'})
-     pipe(
+     .pipe(
        catchError(
          err=>throwError(err)
        )
