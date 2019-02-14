@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { AdminService } from './../admin.service';
+import { Component, OnInit } from '@angular/core';
 
 
 @Component({
@@ -6,6 +7,27 @@ import { Component } from "@angular/core";
   templateUrl:'./facilityreport.component.html',
   styleUrls:['./facility.component.css']
 })
-export class FacilityReportComponent{
+export class FacilityReportComponent implements OnInit{
+  spinner=true;
+  facilities=[];
+  constructor(public adminService:AdminService){
+
+  }
+  ngOnInit(){
+
+  this.adminService.getFacility()
+     .subscribe(
+       data=>{
+        this.facilities=[...data.body.data.roomfacility]
+        this.spinner=false;
+
+       },
+       err=>{
+         console.log(err)
+       }
+     )
+
+
+  }
 
 }
