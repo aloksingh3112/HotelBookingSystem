@@ -1,6 +1,8 @@
+import { catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { serverdata } from '../main/config';
+import { pipe, throwError } from 'rxjs';
 
 @Injectable()
 export class AdminService{
@@ -18,6 +20,27 @@ export class AdminService{
   addFacility(data){
     const body=JSON.stringify(data);
     return this.http.post<any>(`${serverdata.path}/adminoperation/addfacility`,body,{observe:'response'})
+  }
+
+  getCategory(){
+    return this.http.get<any>(`${serverdata.path}/adminoperation/getcategory`,{observe:'response'})
+     pipe(
+       catchError(
+         err=>throwError(err)
+       )
+     )
+
+  }
+
+
+  getFacility(){
+    return this.http.get<any>(`${serverdata.path}/adminoperation/getfacility`,{observe:'response'})
+     pipe(
+       catchError(
+         err=>throwError(err)
+       )
+     )
+
   }
 
 }

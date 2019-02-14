@@ -1,5 +1,6 @@
+import { AdminService } from './../admin.service';
 import { NgForm } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IMultiSelectOption } from 'angular-2-dropdown-multiselect';
 
 
@@ -8,39 +9,31 @@ import { IMultiSelectOption } from 'angular-2-dropdown-multiselect';
   templateUrl:'./room.component.html',
   styleUrls:['./room.component.css']
 })
-export class RoomComponent{
-  datas=[
-    'alok',
-    'avinash',
-    'sid'
-  ];
+export class RoomComponent implements OnInit{
+  datas = [] ;
   spinner = true;
 
   optionsModel: number[];
   myOptions: IMultiSelectOption[];
 
-  constructor(){
-    this.myOptions = [
-      { id: 'spinner', name: 'Option 1' },
-      { id: 'name', name: 'Option 2' },
-      { id: 'aa', name: 'Option 3' },
-      { id: 'bb', name: 'Option 4' }
-  ];
-  setTimeout(()=>{
-    this.spinner = false;
-  },2000)
+  constructor(public adminService:AdminService){
+
   }
+  ngOnInit(){
+   this.adminService.getCategory()
+    .subscribe(
+      data=>console.log(data),
+      err=
+    )
+
+  }
+
+
   addRoom(data:NgForm){
     console.log(data.value);
 
   }
 
-  add(event){
-    console.log(event.target.value);
 
-  }
-  onChange() {
-    console.log(this.optionsModel);
-}
 
 }
