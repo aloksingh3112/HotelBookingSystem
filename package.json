@@ -20,13 +20,6 @@
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "angular-2-dropdown-multiselect": "^1.9.0",
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.18.3",
-    "core-js": "^2.5.4",
-    "express": "^4.16.4",
-    "jsonwebtoken": "^8.4.0",
-    "lodash": "^4.17.11",
-    "mongoose": "^5.4.4",
     "ng2-validation": "^4.2.0",
     "rxjs": "^6.0.0",
     "zone.js": "~0.8.26"

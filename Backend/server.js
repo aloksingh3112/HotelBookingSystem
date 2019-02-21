@@ -5,8 +5,8 @@ const http=require('http');
 const app=express();
 const mongoose=require('mongoose');
 
-const adminRoute=require('./Backend/Routes/admin/adminauth');
-const adminOperation=require('./Backend/Routes/admin/adminoperation');
+const adminRoute=require('./Routes/admin/adminauth');
+const adminOperation=require('./Routes/admin/adminoperation');
 
 //connection
 mongoose.connect('mongodb://localhost:27017/hotelmanagement',{useNewUrlParser:true})
