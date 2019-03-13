@@ -24,4 +24,13 @@ export class RoomReportComponent implements OnInit {
         )
   }
 
+  deleteroomreport(id) {
+
+    this.adminService.deleteRoomReport(id)
+      .subscribe(
+        data=>console.log('data is',data),
+        err=>console.log(err)
+      )
+  }
+
 }

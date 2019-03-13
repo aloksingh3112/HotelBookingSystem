@@ -72,4 +72,13 @@ export class AdminService{
       )
   }
 
+  deleteRoomReport(id){
+    return this.http.delete(`${serverdata.path}/adminoperation/roomdelete/:${id}`,{observe:'response'})
+     .pipe(
+       catchError(
+         err=>throwError(err)
+       )
+     )
+  }
+
 }

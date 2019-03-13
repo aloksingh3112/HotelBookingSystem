@@ -61,7 +61,7 @@ router.post('/addroom',[authMiddleware,adminMiddleware], async (req, res) => {
 router.get('/getroom',[authMiddleware,adminMiddleware], async (req, res) => {
   try {
     const data = await AdminModel.findOne({}).populate('room');
-    console.log(data);
+
     const roomarray = data.room;
     return res.status(200).json({
       message: "success",
@@ -82,16 +82,18 @@ router.get('/getroom',[authMiddleware,adminMiddleware], async (req, res) => {
 })
 
 
-router.delete('/roomdelete/:id', [authMiddleware,adminMiddleware],async (req, res) => {
-  console.log(req.params.id)
+router.delete('/roomdelete/:id',async (req, res) => {
+  console.log("paramis",req.params.id)
   try {
   const admin= await AdminModel.findOne({});
+  console.log(admin);
   const index=admin.room.indexOf(req.params.id) ;
-  console.log(index);
+  console.log("index is",index);
    admin.room.splice(index,1);
    const result = await admin.save();
    try {
-    const deleteRoom=await RoomModel.findByIdAndDelete({_id:req.params.id});
+    const deleteRoom=await RoomModel.findByIdAndDelete(req.params.id);
+    console.log(deleteRoom);
     return res.status(200).json({
       message :"deleted successfully",
       data:deleteRoom
@@ -154,7 +156,7 @@ router.put('/editroom/:id',[authMiddleware,adminMiddleware],async (req,res)=>{
 
 // room category route
 router.post('/addcategory',[authMiddleware,adminMiddleware],async (req,res)=>{
-  console.log(req.body);
+
 
    const roomCategory=new RoomCategoryModel({
     roomcategory:req.body.roomcategory
@@ -295,10 +297,10 @@ router.post('/addfacility',[authMiddleware,adminMiddleware],async (req,res)=>{
 })
 
 router.get('/getfacility',[authMiddleware,adminMiddleware],async (req,res)=>{
-  console.log("ggsipu")
+
   try {
     const admin=await AdminModel.findOne({}).populate('roomfacility')
-    console.log(admin);
+
 
       return res.status(200).json({
         message:"success",
@@ -344,7 +346,7 @@ router.put('/updatefacility/:id',[authMiddleware,adminMiddleware],async (req,res
 router.delete('/deletefacility/:id',[authMiddleware,adminMiddleware],async (req,res)=>{
 
   const id =req.params.id;
-  console.log(id);
+
   try {
 
      const deletefacility= await RoomFacilityModel.findOneAndDelete({_id:id});
