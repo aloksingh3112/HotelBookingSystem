@@ -26,4 +26,16 @@ ngOnInit(){
     )
 }
 
+
+deletecategory(id){
+  this.adminService.deleteCategory(id)
+   .subscribe(
+     data=>{
+      var categoryId = this.categories.findIndex(data=>data._id==id);
+      this.categories.splice(categoryId,1);
+     },
+     err=>console.log(err)
+   )
+}
+
 }

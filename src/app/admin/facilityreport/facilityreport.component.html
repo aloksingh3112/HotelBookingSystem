@@ -10,7 +10,7 @@
 
 
 <div class="container" *ngIf='!spinner'>
-<h2>Room Category Reports</h2>
+<h2>Room Facility Reports</h2>
 <table class='table table-bordered'>
    <thead class='thead-light'>
        <tr >
@@ -23,7 +23,7 @@
      <tr *ngFor='let facility of facilities'>
         <td>{{facility._id}}</td>
         <td>{{facility.roomfacility}}</td>
-        <td><a class='action'>Edit</a> | <a class='action'>Delete</a></td>
+        <td><a class='action'>Edit</a> | <a class='action' (click)='deletefacility(facility._id)'>Delete</a></td>
      </tr>
    </tbody>
 

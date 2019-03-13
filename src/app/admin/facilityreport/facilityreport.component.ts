@@ -30,4 +30,17 @@ export class FacilityReportComponent implements OnInit{
 
   }
 
+  deletefacility(id){
+    this.adminService.deleteFacility(id)
+      .subscribe(
+        data=>{
+          var facilityId = this.facilities.findIndex(data=>data._id==id);
+          this.facilities.splice(facilityId,1);
+        },
+        err=>{
+          console.log(err)
+        }
+      )
+  }
+
 }

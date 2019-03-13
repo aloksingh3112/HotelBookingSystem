@@ -81,4 +81,24 @@ export class AdminService{
      )
   }
 
+  deleteFacility(id){
+    return this.http.delete(`${serverdata.path}/adminoperation/deletefacility/${id}`)
+      .pipe(
+        catchError(
+          err=>throwError(err);
+        )
+      )
+
+  }
+
+  deleteCategory(id){
+    return this.http.delete(`${serverdata.path}/adminoperation/deletecategory/${id}`)
+      .pipe(
+        catchError(
+          err=>throwError(err);
+        )
+      )
+
+  }
+
 }
