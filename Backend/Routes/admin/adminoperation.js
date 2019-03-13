@@ -1,6 +1,7 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
+const mongoose=require('mongoose');
 const AdminModel = require('../../Schema/admin/adminschema');
 const RoomModel = require('../../Schema/admin/roomschema');
 const RoomFacilityModel = require('../../Schema/admin/roomfacility');
@@ -83,12 +84,12 @@ router.get('/getroom',[authMiddleware,adminMiddleware], async (req, res) => {
 
 
 router.delete('/roomdelete/:id',async (req, res) => {
-  console.log("paramis",req.params.id)
+  console.log("paramis",req.params.id);
   try {
   const admin= await AdminModel.findOne({});
-  console.log(admin);
+
   const index=admin.room.indexOf(req.params.id) ;
-  console.log("index is",index);
+
    admin.room.splice(index,1);
    const result = await admin.save();
    try {
@@ -321,6 +322,7 @@ router.get('/getfacility',[authMiddleware,adminMiddleware],async (req,res)=>{
 
 router.put('/updatefacility/:id',[authMiddleware,adminMiddleware],async (req,res)=>{
   const id =req.params.id;
+
   try {
     const updatefacility= await RoomFacilityModel.findByIdAndUpdate({_id:id},{
       $set:req.body

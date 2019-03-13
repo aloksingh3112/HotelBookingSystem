@@ -28,7 +28,11 @@ export class RoomReportComponent implements OnInit {
 
     this.adminService.deleteRoomReport(id)
       .subscribe(
-        data=>console.log('data is',data),
+        data=>{
+         var roomId=this.rooms.findIndex(data=>data._id==id);
+         this.rooms.splice(roomId,1);
+
+        },
         err=>console.log(err)
       )
   }
