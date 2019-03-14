@@ -4,14 +4,14 @@ import { Router } from '@angular/router';
 import { AdminService } from './../admin.service';
 
 import { NgForm } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.css']
 })
-export class CategoryComponent implements OnInit {
+export class CategoryComponent implements OnInit,OnDestroy {
   message: string;
   errorMessage: string;
   editData;
@@ -57,5 +57,9 @@ export class CategoryComponent implements OnInit {
         }
       );
     }
+  }
+
+  ngOnDestroy(){
+    this.adminService.isEdit=false;
   }
 }

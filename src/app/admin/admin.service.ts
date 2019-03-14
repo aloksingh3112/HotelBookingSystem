@@ -130,4 +130,31 @@ export class AdminService{
 
   }
 
+
+
+
+  editFacility(facility){
+     this.editFacilityData={...facility};
+     this.isEdit=true;
+     this.router.navigateByUrl('/admin/facility')
+  }
+
+  getFacilityData(){
+    return this.editFacilityData;
+  }
+
+  editRoomFacility(data){
+    const id=data._id;
+    const body=JSON.stringify(data);
+return this.http.put(`${serverdata.path}/adminoperation/updatefacility/${id}`,body,{
+ observe:'response'
+})
+  .pipe(
+    catchError(
+      err=>throwError(err)
+    )
+  )
+
+  }
+
 }

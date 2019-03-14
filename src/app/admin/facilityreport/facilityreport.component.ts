@@ -28,6 +28,8 @@ export class FacilityReportComponent implements OnInit{
      )
 
 
+
+
   }
 
   deletefacility(id){
@@ -41,6 +43,11 @@ export class FacilityReportComponent implements OnInit{
           console.log(err)
         }
       )
+  }
+
+
+  editfacility(facility){
+    this.adminService.editFacility(facility);
   }
 
 }
