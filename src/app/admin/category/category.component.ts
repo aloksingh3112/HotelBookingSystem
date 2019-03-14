@@ -29,9 +29,6 @@ this.adminService.addCategory(data.value)
 data.reset();
    },
    err=>{
-//   if(err.status == 401 ||403){
-//  this.router.navigateByUrl('/login');
-//   }
   this.errorMessage = err.error.message;
 
 

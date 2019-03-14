@@ -4,8 +4,11 @@
       <label for="category">Room Category</label>
       <input type="text" class="form-control" name='roomcategory' id='category' required ngModel>
     </div>
-    <button class="btn btn-primary" type='submit'>
+    <button class="btn btn-primary" type='submit' *ngIf='!adminService.isEdit'>
       Add
+    </button>
+    <button class='btn btn-dark ml-2' type='submit' *ngIf='adminService.isEdit'>
+     Edit
     </button>
     <button class="btn btn-danger ml-3" type='button'>Reset</button>
 

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -6,8 +7,11 @@ import { pipe, throwError } from 'rxjs';
 
 @Injectable()
 export class AdminService{
-
-  constructor(private http:HttpClient){
+  isEdit = false;
+  private editCategoryData = {};
+  private editFacilityData = {};
+  private editRoomData =  {}
+  constructor(private http:HttpClient,private router:Router){
 
   }
 
@@ -98,6 +102,13 @@ export class AdminService{
           err=>throwError(err);
         )
       )
+
+  }
+
+  editCategory(category){
+    this.editCategoryData={...category};
+    this.isEdit=true;
+    this.router.navigateByUrl('admin/category');
 
   }
 

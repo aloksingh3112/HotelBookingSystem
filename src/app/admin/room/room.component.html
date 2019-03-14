@@ -131,9 +131,13 @@
 
 
 
-    <button class="btn btn-primary mb-3" type='submit' [disabled]='f.invalid'>
+    <button class="btn btn-primary mb-3" type='submit' [disabled]='f.invalid'
+    *ngIf='!adminService.isEdit'>
         Add
-      </button>
+      </button >
+      <button class='btn btn-dark ml-2' type='submit' *ngIf='adminService.isEdit'>
+        Edit
+       </button>
     <button class="btn btn-danger ml-3 mb-3" type='button'>Reset</button>
 
 

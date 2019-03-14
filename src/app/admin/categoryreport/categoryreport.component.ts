@@ -38,4 +38,10 @@ deletecategory(id){
    )
 }
 
+editcategory(category){
+this.adminService.editCategory(category)
+
+
+}
+
 }
