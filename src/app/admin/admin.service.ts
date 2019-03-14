@@ -157,4 +157,30 @@ return this.http.put(`${serverdata.path}/adminoperation/updatefacility/${id}`,bo
 
   }
 
+
+
+  editRoom(room){
+    console.log(room);
+    this.editRoomData={...room};
+    this.isEdit=true;
+    this.router.navigateByUrl('/admin/room');
+  }
+
+  getEditRoom(){
+    return this.editRoomData;
+  }
+
+  updateRoom(data){
+    const id=data._id;
+    const body=JSON.stringify(data);
+    return this.http.put(`${serverdata.path}/adminoperation/editroom/${id}`,body,{
+      observe:'response'
+    })
+    .pipe(
+      catchError(
+        err=>throwError(err)
+      )
+    )
+  }
+
 }

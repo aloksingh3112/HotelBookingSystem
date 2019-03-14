@@ -13,8 +13,22 @@ import { IMultiSelectOption } from 'angular-2-dropdown-multiselect';
 export class RoomComponent implements OnInit{
   datas = [] ;
   spinner = true;
+  roomData;
   message;
   errorMessage;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   optionsModel: number[];
   myOptions: IMultiSelectOption[]= [];
@@ -23,6 +37,18 @@ export class RoomComponent implements OnInit{
 
   }
   ngOnInit(){
+    if(this.adminService.isEdit){
+   this.roomData=this.adminService.getEditRoom();
+   console.log(this.roomData);
+
+
+
+    }
+
+
+
+
+
     return forkJoin(
 
     this.adminService.getCategory(),
@@ -35,7 +61,7 @@ export class RoomComponent implements OnInit{
        console.log(data[0], data[1]);
        this.datas = [...data[0].body.data.roomcategory];
        for(let option of data[1].body.data.roomfacility){
-         console.log(option.roomfacility);
+
          const obj={
            id:option.roomfacility,
            name:option.roomfacility

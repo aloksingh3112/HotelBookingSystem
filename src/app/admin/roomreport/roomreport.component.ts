@@ -37,4 +37,8 @@ export class RoomReportComponent implements OnInit {
       )
   }
 
+  editroom(room){
+    this.adminService.editRoom(room);
+  }
+
 }
