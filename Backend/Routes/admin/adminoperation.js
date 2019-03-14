@@ -237,15 +237,16 @@ router.delete('/deletecategory/:id',[authMiddleware,adminMiddleware],async (req,
 
 })
 
-router.put('/updatecategory/:id',[authMiddleware,adminMiddleware],async (req,res)=>{
+router.put('/updatecategory/:id',async (req,res)=>{
   try {
     const id=req.params.id;
+    console.log(id);
     const category=await RoomCategoryModel.findByIdAndUpdate({_id:id},{
       $set:req.body
     },{new:true})
     if(category){
        return res.status(200).json({
-         message:"succuss",
+         message:"Edit Sucessfully",
          data:category
        })
     }

@@ -2,7 +2,7 @@
   <form (ngSubmit)='addCategory(f)' #f='ngForm'>
     <div class="form-group mt-4">
       <label for="category">Room Category</label>
-      <input type="text" class="form-control" name='roomcategory' id='category' required ngModel>
+      <input type="text" class="form-control" name='roomcategory' id='category' required ngModel #category='ngModel' [(ngModel)]='categoryData'>
     </div>
     <button class="btn btn-primary" type='submit' *ngIf='!adminService.isEdit'>
       Add

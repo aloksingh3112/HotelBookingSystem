@@ -112,4 +112,22 @@ export class AdminService{
 
   }
 
+  getCategoryData(){
+    return this.editCategoryData;
+  }
+
+  editRoomCategory(data){
+    const id:number = data._id;
+    console.log(data,id);
+    const body=JSON.stringify(data);
+    return this.http.put<any>(`${serverdata.path}/adminoperation/updatecategory/${id}`,body,{observe:'response'})
+     .pipe(
+       catchError(
+         err=>throwError(err)
+       )
+     )
+
+
+  }
+
 }
