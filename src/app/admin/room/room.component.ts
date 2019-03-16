@@ -1,3 +1,4 @@
+import { OnDestroy } from '@angular/core';
 import { Observable, forkJoin } from 'rxjs';
 import { AdminService } from './../admin.service';
 import { NgForm } from '@angular/forms';
@@ -10,7 +11,7 @@ import { IMultiSelectOption } from 'angular-2-dropdown-multiselect';
   templateUrl:'./room.component.html',
   styleUrls:['./room.component.css']
 })
-export class RoomComponent implements OnInit{
+export class RoomComponent implements OnInit,OnDestroy{
   datas = [] ;
   spinner = true;
   roomData;
@@ -95,6 +96,12 @@ export class RoomComponent implements OnInit{
         this.errorMessage = err.error.message;
       }
     )
+
+  }
+
+
+  ngOnDestroy() {
+   this.adminService.isEdit=false;
 
   }
 
