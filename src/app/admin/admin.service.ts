@@ -89,9 +89,9 @@ export class AdminService{
     return this.http.delete(`${serverdata.path}/adminoperation/deletefacility/${id}`)
       .pipe(
         catchError(
-          err=>throwError(err);
+          err=>throwError(err)
         )
-      )
+      );
 
   }
 
@@ -99,7 +99,7 @@ export class AdminService{
     return this.http.delete(`${serverdata.path}/adminoperation/deletecategory/${id}`)
       .pipe(
         catchError(
-          err=>throwError(err);
+          err=>throwError(err)
         )
       )
 

@@ -35,7 +35,8 @@ export class FacilityComponent implements OnInit ,OnDestroy{
 
       this.adminService.editRoomFacility(data.value).subscribe(
         facilitydata => {
-          this.message = facilitydata.body.message;
+          console.log(facilitydata.body);
+          //this.message = facilitydata.body.message;
           data.reset();
         },
         err => {

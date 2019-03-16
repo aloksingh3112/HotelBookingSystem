@@ -15,12 +15,12 @@ export class MainComponent {
       if(this.getDecodedAccessToken(token).user.role == 'ADMIN'){
           this.mainService.isAdmin=true;
           this.mainService.isLogin=true;
-          this.route.navigateByUrl('/');
+          // this.route.navigateByUrl('/');
       }
       else if(this.getDecodedAccessToken(token).user.role == 'USER'){
         this.mainService.isUser=true;
         this.mainService.isLogin=true;
-        this.route.navigateByUrl('/');
+        // this.route.navigateByUrl('/');
     }
     }
   }
