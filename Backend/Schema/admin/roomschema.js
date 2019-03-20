@@ -9,7 +9,8 @@ const RoomSchema=new mongoose.Schema({
   maxchilds:{type:Number},
   roomfare:{type:Number},
   roomimage:{type:String},
-  roomdescription:{type:String}
+  roomdescription:{type:String},
+  isbooked:{type:Boolean,default:false}
 
 })
 
