@@ -7,7 +7,7 @@ const UserSchema=new mongoose.Schema({
   mobile:{type:Number},
   dateofbirth:{type:Date},
   address:{type:String},
-  photo:{type:String},
+
   role:{type:String,default:"USER"},
   mybooking:[{type:mongoose.Schema.Types.ObjectId,ref:'BookingModel'}]
 });

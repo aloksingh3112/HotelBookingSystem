@@ -19,7 +19,7 @@ export class MainService {
 
 
     return this.httpClient
-      .post<any>(`${serverdata.path}/admin/signup`, body)
+      .post<any>(`${serverdata.path}/user/signup`, body)
       .pipe(catchError(err => throwError(err)));
   }
 
@@ -32,6 +32,18 @@ export class MainService {
      )
 
    }
+
+
+   userlogin(data){
+    const body=JSON.stringify(data);
+
+    return this.httpClient.post<any>(`${serverdata.path}/user/login`,body,{ observe: 'response' }
+    ).pipe(
+      catchError(err=>throwError(err))
+    )
+
+  }
+
 
 
    logout(){

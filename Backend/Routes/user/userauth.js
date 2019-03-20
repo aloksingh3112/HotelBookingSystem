@@ -18,7 +18,7 @@ router.post('/signup',async (req,res)=>{
        mobile:req.body.mobile,
        dateofbirth:req.body.dateofbirth,
        address:req.body.address,
-       photo:req.body.photo,
+
       })
 
       const user=await userModel.save();

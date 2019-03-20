@@ -37,9 +37,6 @@ export class LoginComponent implements OnInit{
           this.router.navigateByUrl('/admin');
 
         }
-        else{
-
-        }
        },
        err=>{
         this.errorMessage=err.error.message;
@@ -47,8 +44,21 @@ export class LoginComponent implements OnInit{
      )
     }
     else {
+      this.mainService.userlogin(form.value)
+      .subscribe(
+        data=>{
+         localStorage.setItem('token',data.body.token);
+         if(data.body.data.role== 'USER'){
+           this.mainService.isUser=true;
+           this.mainService.isLogin=true;
+           this.router.navigateByUrl('/admin');
 
-    }
+         }
+        },
+        err=>{
+         this.errorMessage=err.error.message;
+        }
+      )    }
 
   }
 
