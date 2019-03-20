@@ -84,7 +84,7 @@ router.post('/login',async (req,res)=>{
       expiresIn:10000
     })
       res.status(200).json({
-        message:"login success fully",
+        message:"login successfully",
         user:admin,
         token:token
       })

@@ -2,6 +2,7 @@ const express=require('express');
 const bcrypt=require('bcryptjs');
 const UserModel=require('../../Schema/User/userschema');
 const router=express.Router();
+const jwt=require('jsonwebtoken');
 
 router.post('/signup',async (req,res)=>{
   try {
@@ -58,9 +59,15 @@ if(!isValid){
 
   })
 }
+
+const token=jwt.sign({
+  user:user
+},"aloksingh3112",{expiresIn:10000});
+
 return res.status(200).json({
   message:"login Sucessfully",
-  data:user
+  data:user,
+  token:token
 })
 
   } catch (error) {
