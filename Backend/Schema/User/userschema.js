@@ -9,7 +9,7 @@ const UserSchema=new mongoose.Schema({
   address:{type:String},
   photo:{type:String},
   role:{type:String,default:"USER"},
-  mybooking:[{type:mongoose.Schema.Types.ObjectId,ref:'BookingSchema'}]
+  mybooking:[{type:mongoose.Schema.Types.ObjectId,ref:'BookingModel'}]
 });
 
 module.exports=mongoose.model('UserModel',UserSchema)

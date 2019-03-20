@@ -7,6 +7,7 @@ const mongoose=require('mongoose');
 
 const adminRoute=require('./Routes/admin/adminauth');
 const adminOperation=require('./Routes/admin/adminoperation');
+const userRoute=require('./Routes/user/userauth');
 
 //connection
 mongoose.connect('mongodb://localhost:27017/hotelmanagement',{useNewUrlParser:true})
@@ -28,7 +29,8 @@ app.use(function(req, res, next) {
 
 
 app.use('/admin',adminRoute);
-app.use('/adminoperation',adminOperation)
+app.use('/adminoperation',adminOperation);
+app.use('/user',userRoute);
 
 
 // Server
