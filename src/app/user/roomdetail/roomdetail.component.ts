@@ -63,4 +63,14 @@ export class RoomDetailComponent implements OnInit{
    get email(){
      return this.roomForm.get('email');
    }
+
+
+   bookRoom(){
+     const paymentDatail={
+       userdata:this.roomForm.value,
+       roomdata:this.roomDetail
+
+     }
+     console.log(paymentDatail);
+   }
 }

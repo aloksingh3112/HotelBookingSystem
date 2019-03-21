@@ -26,7 +26,7 @@
     <div class="col-md-12">
       <h1>BOOK YOUR ROOM</h1>
 
-      <form [formGroup]='roomForm'>
+      <form [formGroup]='roomForm' (ngSubmit)='bookRoom()'>
         <div class="form-group">
           <label for="fromdate">From Date</label>
           <input type="date" class="form-control" id='fromdate' formControlName='fromdate'>
