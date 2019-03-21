@@ -1,24 +1,47 @@
 <div class="container gg" *ngIf='spinner'>
 
   <div class="text-center">
-      <div class="spinner-border" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
     </div>
+  </div>
 </div>
 
 <div class="container second" *ngIf='!spinner'>
-   <div class="row mt-2">
-       <div class="col-md-4"></div>
-       <div class="col-md-6"><h1 class='book'>Book Your Room</h1></div>
-       <div class="col-md-2"></div>
-   </div>
-   <div class="row mt-2" >
+  <div class="row mt-2">
+    <div class="col-md-4"></div>
+    <div class="col-md-6">
+      <h1 class='book'>Book Your Room</h1>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+  <div class="row mt-2">
 
-         <div class="col-md-6 " *ngFor='let room of roomData'>
-             <app-roomlist></app-roomlist>
-         </div>
-   </div>
+    <div class="col-md-6 " *ngFor='let room of roomData'>
+        <div class="card mt-4 mb-2 bg-light border-info" style="width: 34rem; height: 20rem;">
+        <div class="card-header">
+          <h2>{{room.roomtype}}</h2>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img class="card-img-top " [src]='room.roomimage'>
+              <a href="#" class="btn btn-primary mt-2">Book</a>
+            </div>
+            <div class="col-md-6 ">
+               <h5>Room Title : {{room.roomtitle}}</h5>
+               <h5>Max Adults : {{room.maxadults}}</h5>
+               <h5>Max Childs : {{room.maxchilds}}</h5>
+               <h5>Room Fare  : {{room.roomfare}}</h5>
+
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 
 </div>
