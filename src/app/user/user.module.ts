@@ -10,6 +10,7 @@ import { MyAccountComponent } from './account/account.component';
 import { CommonModule } from '@angular/common';
 import { UserRouting } from './userrouting.module';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -18,7 +19,7 @@ import { NgModule } from '@angular/core';
   declarations:[
     MyAccountComponent,MyBookingComponent,PaymentComponent,RecieptComponent,BookRoomComponent,RoomDetailComponent,
     RoomListComponent],
-  imports:[UserRouting,CommonModule],
+  imports:[UserRouting,CommonModule,ReactiveFormsModule],
   providers:[UserService],
 
 
