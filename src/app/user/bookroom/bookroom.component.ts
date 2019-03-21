@@ -25,4 +25,8 @@ export class BookRoomComponent implements OnInit{
 
     }
 
+    roomDetail(room){
+      this.userService.setRoomDeatil(room);
+    }
+
 }

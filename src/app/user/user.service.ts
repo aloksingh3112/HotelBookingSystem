@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -7,7 +8,8 @@ import { throwError } from 'rxjs';
 
 @Injectable()
 export class UserService{
-  constructor(private http:HttpClient){}
+  private roomDetail;
+  constructor(private http:HttpClient,private router:Router){}
 
   getRoom(){
     return this.http.get<any>(`${serverdata.path}/adminoperation/getroom`,{observe:'response'})
@@ -16,6 +18,16 @@ export class UserService{
          err=>throwError(err)
        )
      )
+  }
+
+
+  setRoomDeatil(room) {
+    this.roomDetail = room;
+    this.router.navigateByUrl('/user/roomdetail');
+  }
+
+  getRoomDetail(){
+    return this.roomDetail;
   }
 
 }
