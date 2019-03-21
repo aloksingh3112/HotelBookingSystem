@@ -2,35 +2,74 @@
   <div class="row mt-3">
     <h1>SELECTED ROOM DETAILS</h1>
     <div class="card" style="width: 80rem;">
-        <div class="card-body">
-          <div class="row">
+      <div class="card-body">
+        <div class="row">
           <div class="col-md-6">
-              <img class="card-img-top" [src]='roomDetail.roomimage'>
+            <img class="card-img-top" [src]='roomDetail.roomimage'>
           </div>
-            <div class="col-md-6 ">
-                <h2>Room Type : {{roomDetail.roomtype}}</h2>
-                <h2>Max Adults : {{roomDetail.maxadults}}</h2>
-                <h2>Max Childs : {{roomDetail.maxchilds}}</h2>
-                <h2>Room Fare  : {{roomDetail.roomfare}}</h2>
+          <div class="col-md-6 ">
+            <h2>Room Type : {{roomDetail.roomtype}}</h2>
+            <h2>Max Adults : {{roomDetail.maxadults}}</h2>
+            <h2>Max Childs : {{roomDetail.maxchilds}}</h2>
+            <h2>Room Fare : {{roomDetail.roomfare}}</h2>
 
 
-          </div>
           </div>
         </div>
+      </div>
     </div>
 
 
   </div>
-<hr noshade width='100%'>
-<div class="row mt-2">
-   <h1>BOOK YOUR ROOM</h1>
-   <form >
+  <hr noshade width='100%'>
+  <div class="row mt-2 mb-4">
+    <div class="col-md-12">
+      <h1>BOOK YOUR ROOM</h1>
+
+      <form>
+        <div class="form-group">
+          <label for="fromdate">From Date</label>
+          <input type="date" class="form-control" id='fromdate'>
+        </div>
+
+        <div class="form-group">
+          <label for="todate">To Date</label>
+          <input type="date" class="form-control" id='todate'>
+        </div>
+
+        <div class="form-group">
+          <label for="noofperson">No Of Person</label>
+          <input type="number" class="form-control" id='noofperson'>
+        </div>
+
+        <div class="form-group">
+          <label for="noofchild">No Of Childs</label>
+          <input type="number" class="form-control" id='noofchild'>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id='name'>
+        </div>
+
+        <div class="form-group">
+          <label for="mobile">Mobile</label>
+          <input type="text" class="form-control" id='mobile'>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id='email'>
+        </div>
+
+      <button type='submit' class="btn btn-primary ml-1">Book</button>
+      <button type='button' class="btn btn-danger ml-3">Cancel</button>
 
 
 
-
-   </form>
-</div>
+      </form>
+    </div>
+  </div>
 
 
 
