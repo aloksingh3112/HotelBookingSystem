@@ -59,7 +59,7 @@ router.post('/addroom',[authMiddleware,adminMiddleware], async (req, res) => {
 
 /** Get Room*/
 
-router.get('/getroom',[authMiddleware,adminMiddleware], async (req, res) => {
+router.get('/getroom', async (req, res) => {
   try {
     const data = await AdminModel.findOne({}).populate('room');
 

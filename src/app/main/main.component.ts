@@ -30,7 +30,6 @@ export class MainComponent {
       this.mainService.isAdmin=false;
       this.mainService.isLogin=false;
       this.mainService.isUser=false;
-      this.route.navigateByUrl('/login')
 
 
     }

@@ -1,1 +1,24 @@
-<h1>Book Room</h1>
+<div class="container gg" *ngIf='spinner'>
+
+  <div class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+</div>
+
+<div class="container second" *ngIf='!spinner'>
+   <div class="row mt-2">
+       <div class="col-md-4"></div>
+       <div class="col-md-6"><h1 class='book'>Book Your Room</h1></div>
+       <div class="col-md-2"></div>
+   </div>
+   <div class="row mt-2" >
+
+         <div class="col-md-6 " *ngFor='let room of roomData'>
+             <app-roomlist></app-roomlist>
+         </div>
+   </div>
+
+
+</div>
