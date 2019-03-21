@@ -22,6 +22,17 @@ export class MainComponent {
         this.mainService.isLogin=true;
         // this.route.navigateByUrl('/');
     }
+
+    }
+    else
+    {
+      console.log('enter');
+      this.mainService.isAdmin=false;
+      this.mainService.isLogin=false;
+      this.mainService.isUser=false;
+      this.route.navigateByUrl('/login')
+
+
     }
   }
 

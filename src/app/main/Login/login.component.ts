@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit{
          if(data.body.data.role== 'USER'){
            this.mainService.isUser=true;
            this.mainService.isLogin=true;
-           this.router.navigateByUrl('/admin');
+           this.router.navigateByUrl('/user');
 
          }
         },
@@ -64,8 +64,6 @@ export class LoginComponent implements OnInit{
 
   changeAdmin(){
     this.isAdmin = !this.isAdmin;
-
-
-  }
+ }
 
 }

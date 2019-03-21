@@ -25,7 +25,8 @@ router.post('/signup',async (req,res)=>{
       const user=await userModel.save();
       return res.status(200).json({
         message:"Register Successfully",
-        data:user
+        data:user,
+        isRegister:true
       })
 
   } catch (error) {

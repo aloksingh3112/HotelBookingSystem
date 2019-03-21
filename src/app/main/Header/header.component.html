@@ -47,22 +47,24 @@
 
 
 
-      <li class="nav-item">
+      <li class="nav-item" routerLink='/user/bookroom'>
         <a class="nav-link" *ngIf='!mainService.isAdmin'>Book Room </a>
       </li>
 
 
 
-      <li class="nav-item" >
-        <a class="nav-link" *ngIf='!mainService.isAdmin'>Room List </a>
-      </li>
 
-      <li class="nav-item">
+
+      <li class="nav-item" routerLink='/user/mybooking'>
         <a class="nav-link" *ngIf='mainService.isUser'>My Booking</a>
       </li>
 
       <li class="nav-item" routerLink='/admin'>
-        <a class="nav-link" *ngIf='mainService.isUser || mainService.isAdmin'>My Account</a>
+        <a class="nav-link" *ngIf=' mainService.isAdmin'>My Account</a>
+      </li>
+
+      <li class="nav-item" routerLink='/user'>
+        <a class="nav-link" *ngIf=' mainService.isUser'>My Account</a>
       </li>
 
 
